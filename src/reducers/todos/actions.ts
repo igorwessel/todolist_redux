@@ -1,3 +1,3 @@
 
-export const ADD_TODO: string = 'ADD_TODO'
-export const TOGGLE_TODO: string = 'TOGGLE_TODO'
+export const ADD_TODO: string = 'todos:ADD_TODO'
+export const TOGGLE_TODO: string = 'todos:TOGGLE_TODO'
