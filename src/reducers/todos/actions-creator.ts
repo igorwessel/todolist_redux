@@ -1,6 +1,6 @@
-import { ADD_TODO, TOGGLE_TODO } from 'reducers/actions'
+import { ADD_TODO, TOGGLE_TODO } from 'reducers/todos/actions'
 import { v4 } from 'uuid'
-import { Action } from './todos'
+import { Action } from '.'
 
 export const addTodo = (text: string): Action => ({
     type: ADD_TODO,

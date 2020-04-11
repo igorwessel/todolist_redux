@@ -5,9 +5,13 @@ import "./styles/global.css";
 import App from "components/App";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import reducer from "reducers/todos";
+import reducer from "reducers";
 
 const store = createStore(reducer);
+
+store.subscribe(() => {
+  console.log(store.getState());
+});
 
 ReactDOM.render(
   <React.StrictMode>

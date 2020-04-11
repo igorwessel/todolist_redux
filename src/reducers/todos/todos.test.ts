@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import todos, { State, Action, initialState } from './todos'
+import todos, { State, Action, initialState } from '.'
 import { ADD_TODO, TOGGLE_TODO } from './actions'
 
 it('should todos is be a function', () => {
@@ -35,7 +35,7 @@ it('should add a new todo item', () => {
     const action: Readonly<Action> = {
         type: ADD_TODO,
         payload: {
-            id: '0',
+            id: '1',
             text: 'Ho'
         }
     }
@@ -108,7 +108,7 @@ it('should return the latest state when action is unknown', () => {
 
 it('should return initial state when state before is undefined', () => {
     const before = undefined
-    const action: Action = {}
+    const action = {type: ''}
     const after = initialState
 
     expect(todos(before, action)).to.be.deep.equal(after)

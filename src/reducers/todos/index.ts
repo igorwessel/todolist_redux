@@ -3,7 +3,7 @@ import { ADD_TODO, TOGGLE_TODO } from "./actions"
 export const initialState: Array<State> = []
 
 export interface Action {
-    type?: string;
+    type: string;
     payload?: Partial<Payload>
 }
 
