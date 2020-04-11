@@ -12,12 +12,12 @@ it('should add a todo', () => {
     const action: Readonly<Action> = {
         type: ADD_TODO,
         payload: {
-            id: 0,
+            id: '0',
             text: 'Hey'
         }
     }
     const after: Array<State> = [{
-        id: 0,
+        id: '0',
         text: 'Hey',
         completed: false,
     }]
@@ -27,7 +27,7 @@ it('should add a todo', () => {
 
 it('should add a new todo item', () => {
     const before: Array<State> = ([{
-        id: 0,
+        id: '0',
         text: 'Hey',
         completed: false
     }])
@@ -35,14 +35,14 @@ it('should add a new todo item', () => {
     const action: Readonly<Action> = {
         type: ADD_TODO,
         payload: {
-            id: 1,
+            id: '0',
             text: 'Ho'
         }
     }
 
     const after: Array<State> = [
-        {id: 0, text: 'Hey', completed: false,},
-        {id: 1, text: 'Ho', completed: false,}
+        {id: '0', text: 'Hey', completed: false,},
+        {id: '1', text: 'Ho', completed: false,}
     ]
     
     expect(todos(before, action)).to.be.deep.equal(after)
@@ -51,19 +51,19 @@ it('should add a new todo item', () => {
 
 it('should toggle first todo', () => {
     const before: Array<State> = [        
-        {id: 0, text: 'Hey', completed: false,},
-        {id: 1, text: 'Ho', completed: false,}
+        {id: '0', text: 'Hey', completed: false,},
+        {id: '1', text: 'Ho', completed: false,}
     ]
     
     const action: Readonly<Action> = {
         type: TOGGLE_TODO,
         payload: {
-            id: 0
+            id: '0'
         }
     }
     const after: Array<State> = [
-        {id: 0, text: 'Hey', completed: true,},
-        {id: 1, text: 'Ho', completed: false,}
+        {id: '0', text: 'Hey', completed: true,},
+        {id: '1', text: 'Ho', completed: false,}
     ]
     
     expect(todos(before, action)).to.be.deep.equal(after)
@@ -72,19 +72,19 @@ it('should toggle first todo', () => {
 
 it('should toggle second todo ', () => {
     const before: Array<State> = [        
-        {id: 0, text: 'Hey', completed: false,},
-        {id: 1, text: 'Ho', completed: false,}
+        {id: '0', text: 'Hey', completed: false,},
+        {id: '1', text: 'Ho', completed: false,}
     ]
     
     const action: Readonly<Action> = {
         type: TOGGLE_TODO,
         payload: {
-            id: 1
+            id: '1'
         }
     }
     const after: Array<State> = [
-        {id: 0, text: 'Hey', completed: false,},
-        {id: 1, text: 'Ho', completed: true,}
+        {id: '0', text: 'Hey', completed: false,},
+        {id: '1', text: 'Ho', completed: true,}
     ]
     
     expect(todos(before, action)).to.be.deep.equal(after)
@@ -92,7 +92,7 @@ it('should toggle second todo ', () => {
 
 it('should return the latest state when action is unknown', () => {
     const before: Array<State> = [        
-        {id: 0, text: 'Hey', completed: false,}
+        {id: '0', text: 'Hey', completed: false,}
     ]
 
     const action: Readonly<Action> = {
@@ -100,7 +100,7 @@ it('should return the latest state when action is unknown', () => {
     }
 
     const after: Array<State> = [
-        {id: 0, text: 'Hey', completed: false}
+        {id: '0', text: 'Hey', completed: false}
     ]
 
     expect(todos(before, action)).to.be.deep.equal(after)

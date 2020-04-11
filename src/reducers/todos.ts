@@ -8,12 +8,12 @@ export interface Action {
 }
 
 export interface Payload {
-    id: number;
+    id: string;
     text: string;
 }
 
 export interface State {
-    id?: number;
+    id?: string;
     text?: string;
     completed?: boolean;
 }

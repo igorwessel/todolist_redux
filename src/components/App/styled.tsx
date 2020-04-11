@@ -44,6 +44,7 @@ export const Input = styled.input`
 
 export const Main = styled.main`
   height: 100vh;
+  overflow-y: auto;
 `;
 
 export const ButtonWithIcon = styled.button`
@@ -54,7 +55,14 @@ export const ButtonWithIcon = styled.button`
 
 export const List = styled.ul``;
 
-export const ListItem = styled.li``;
+export const ListItem = styled.li`
+  display: flex;
+  list-style: none;
+  align-items: center;
+  padding: 10px 0;
+  width: 90%;
+  border-bottom: 1px solid black;
+`;
 
 export const Footer = styled.footer`
   display: flex;
@@ -62,4 +70,7 @@ export const Footer = styled.footer`
   justify-content: space-between;
 `;
 
-export const Link = styled.a``;
+export const Link = styled.a`
+  display: flex;
+  align-items: center;
+`;
