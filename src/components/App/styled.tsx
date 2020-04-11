@@ -12,14 +12,25 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 15px;
-  justify-content: space-between;
   background-color: orange;
   height: 90px;
 `;
 
-export const ActionsContainer = styled(Header)``;
+export const Form = styled.form`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const FilterContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
 
 export const Input = styled.input`
   background-color: white;
@@ -33,6 +44,12 @@ export const Input = styled.input`
 
 export const Main = styled.main`
   height: 100vh;
+`;
+
+export const ButtonWithIcon = styled.button`
+  background-color: transparent;
+  outline: 0;
+  border: 0;
 `;
 
 export const List = styled.ul``;

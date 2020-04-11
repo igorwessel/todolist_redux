@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Input,
@@ -6,31 +6,63 @@ import {
   Main,
   List,
   ListItem,
-  Footer,
   Link,
-  ActionsContainer,
+  Form,
+  FilterContainer,
+  ButtonWithIcon,
 } from "./styled";
 import { MdAddCircleOutline } from "react-icons/md";
+import { State } from "reducers/todos";
+import { addTodo } from "reducers/actions-creator";
+import { connect } from "react-redux";
 
-function App() {
+const App = ({
+  todos,
+  handleAddTodo,
+}: {
+  todos: Array<State>;
+  handleAddTodo: (e: any) => void;
+}) => {
+  const [text, setText] = useState<string>("");
+
+  console.log(todos);
   return (
     <Container>
       <Header>
-        <ActionsContainer>
-          <Input />
-          <MdAddCircleOutline size={24} color="#fff" />
-        </ActionsContainer>
+        <Form onSubmit={handleAddTodo}>
+          <Input
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            name="todo"
+          />
+          <ButtonWithIcon type="submit">
+            <MdAddCircleOutline size={24} color="#fff" />
+          </ButtonWithIcon>
+        </Form>
+        <FilterContainer>
+          <Link>Todos</Link>
+          <Link>Finalizado</Link>
+          <Link>Em Progresso</Link>
+        </FilterContainer>
       </Header>
       <Main>
         <List>
           <ListItem>Opa</ListItem>
         </List>
       </Main>
-      <Footer>
-        <Link>Todos</Link> | <Link>Finalizado</Link> | <Link>Em Progresso</Link>
-      </Footer>
     </Container>
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state: Array<State>) => ({
+  todos: state,
+});
+
+const mapDispatchtoProps = (dispatch: any) => ({
+  handleAddTodo: (e: any) => {
+    e.preventDefault();
+    dispatch(addTodo(e.target?.todo.value));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchtoProps)(App);
