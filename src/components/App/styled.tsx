@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #bbb;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100vh;
   max-width: 400px;
@@ -16,11 +17,11 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background-color: orange;
+  background: rgba(0, 0, 0, 0.65);
   height: 90px;
 `;
 
 export const Main = styled.main`
   height: 100vh;
-  overflow-y: auto;
+  overflow-y: scroll;
 `;

@@ -9,10 +9,6 @@ import reducer from "reducers";
 
 const store = createStore(reducer);
 
-store.subscribe(() => {
-  console.log(store.getState());
-});
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

@@ -1,10 +1,12 @@
 import React from "react";
 import * as actions from "reducers/visibility-filter/actions";
 import { connect } from "react-redux";
-import { MdCheckBoxOutlineBlank, MdSentimentNeutral } from "react-icons/md";
+import { MdCheckBoxOutlineBlank, MdFormatListBulleted } from "react-icons/md";
 import { IoMdSquare } from "react-icons/io";
 import { Container, Link } from "./styled";
 import { Dispatch } from "redux";
+import { Store } from "interfaces";
+import { FilterItems } from "interfaces/filter";
 import { setVisibilityFilter } from "reducers/visibility-filter/actions-creator";
 
 const Filter = ({
@@ -12,15 +14,11 @@ const Filter = ({
   handleFilter,
 }: {
   activeFilter: string;
-  handleFilter: any;
+  handleFilter: Function;
 }) => {
   return (
     <Container>
-      {filterItems.map((item: any) => {
-        if (activeFilter === item.action) {
-          return <span key={item.action}>Filtro</span>;
-        }
-
+      {filterItems.map((item: FilterItems) => {
         return (
           <Link key={item.action} onClick={handleFilter(item.action)}>
             {item.icon}
@@ -32,10 +30,10 @@ const Filter = ({
   );
 };
 
-const filterItems: Array<object> = [
+const filterItems: Array<FilterItems> = [
   {
     icon: (
-      <MdCheckBoxOutlineBlank
+      <MdFormatListBulleted
         size={16}
         style={{ marginRight: 12 }}
         cursor="pointer"
@@ -51,7 +49,7 @@ const filterItems: Array<object> = [
   },
   {
     icon: (
-      <MdSentimentNeutral
+      <MdCheckBoxOutlineBlank
         size={16}
         style={{ marginRight: 12 }}
         cursor="pointer"
@@ -63,12 +61,12 @@ const filterItems: Array<object> = [
 ];
 
 const mapDipatchToProps = (dispatch: Dispatch) => ({
-  handleFilter: (filter: string) => (e: Event) => {
+  handleFilter: (filter: string) => (e: MouseEvent) => {
     dispatch(setVisibilityFilter(filter));
   },
 });
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: Store) => ({
   activeFilter: state.visibilityFilter,
 });
 

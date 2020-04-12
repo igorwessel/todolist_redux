@@ -6,6 +6,7 @@ import { ListItem, List } from "./styled";
 import { State } from "reducers/todos";
 import { Dispatch } from "redux";
 import { toggleTodo } from "reducers/todos/actions-creator";
+import { Store } from "interfaces/index";
 import * as filterActions from "reducers/visibility-filter/actions";
 
 const TodoList = ({
@@ -14,24 +15,20 @@ const TodoList = ({
   activeFilter,
 }: {
   todos: Array<State>;
-  handleToggleTodo: any;
+  handleToggleTodo: Function;
   activeFilter: string;
 }) => {
   return (
     <List>
       {todos
-        // eslint-disable-next-line array-callback-return
         .filter((todo: State) => {
-          switch (activeFilter) {
-            case filterActions.SHOW_ALL:
-              return true;
+          const filterItems: any = {
+            [filterActions.SHOW_ALL]: true,
+            [filterActions.SHOW_COMPLETED]: todo.completed,
+            [filterActions.SHOW_ACTIVE]: !todo.completed,
+          };
 
-            case filterActions.SHOW_COMPLETED:
-              return todo.completed;
-
-            case filterActions.SHOW_ACTIVE:
-              return !todo.completed;
-          }
+          return filterItems[activeFilter];
         })
         .map((todo: State) => (
           <ListItem
@@ -44,6 +41,7 @@ const TodoList = ({
               <MdCheckBoxOutlineBlank
                 size="100%"
                 style={{
+                  marginLeft: 10,
                   marginRight: 25,
                   maxWidth: "16px",
                 }}
@@ -53,6 +51,7 @@ const TodoList = ({
               <IoMdSquare
                 size="100%"
                 style={{
+                  marginLeft: 10,
                   marginRight: 25,
                   maxWidth: "16px",
                 }}
@@ -66,7 +65,7 @@ const TodoList = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: Store) => ({
   todos: state.todos,
   activeFilter: state.visibilityFilter,
 });

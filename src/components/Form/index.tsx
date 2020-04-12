@@ -1,16 +1,16 @@
 import React from "react";
 import { Input, ButtonWithIcon, FormStyled } from "./styled";
-import { MdAddCircleOutline } from "react-icons/md";
+import { MdAddCircle } from "react-icons/md";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { addTodo } from "reducers/todos/actions-creator";
 
-const Form = ({ handleAddTodo }: { handleAddTodo: any }) => {
+const Form = ({ handleAddTodo }: { handleAddTodo: React.FormEventHandler }) => {
   return (
     <FormStyled onSubmit={handleAddTodo}>
       <Input name="todo" />
       <ButtonWithIcon type="submit">
-        <MdAddCircleOutline size={24} color="#fff" cursor="pointer" />
+        <MdAddCircle size={24} color="#fff" cursor="pointer" />
       </ButtonWithIcon>
     </FormStyled>
   );

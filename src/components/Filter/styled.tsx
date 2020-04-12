@@ -9,4 +9,6 @@ export const Container = styled.div`
 export const Link = styled.a`
   display: flex;
   align-items: center;
+  font-weight: 600;
+  color: #fff;
 `;
